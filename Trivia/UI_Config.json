@@ -1,0 +1,125 @@
+{
+    "output_file": "settings.json",
+    "LiveOnly": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Live Only Mode",
+        "tooltip": "True if you want it to only run when you are live",
+        "group" : "General"
+    },
+    "Permission": {
+        "type": "dropdown",
+        "value": "Everyone",
+        "items": ["Everyone","Regular","Subscriber","Moderator","Editor"],
+        "label": "Permission level",
+        "tooltip": "Set the permission level for participating",
+        "group" : "General"
+    },
+    "IgnoreCaseSensitivity": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Ignore Case Sensitivity",
+        "tooltip": "True if you want the word case sensitivity to be ignored when giving an answer",
+        "group" : "General"
+    },
+    "AcceptedPrefixes": {
+        "type": "textbox",
+        "value": "a ##the ",
+        "label": "Allowable prefixes in questions/answers",
+        "tooltip": "Prefixes including spaces allowed in questions/answers which will\r\n be ignored when comparing, separated by the separator value",
+        "group" : "General"
+    },
+    "AcceptedSuffixes": {
+        "type": "textbox",
+        "value": "s##'s",
+        "label": "Allowable suffixes in questions/answers",
+        "tooltip": "Suffixes including spaces allowed in questions/answers which will\r\n be ignored when comparing, separated by the separator value",
+        "group" : "General"
+    },
+    "AcceptSimilarAnswers": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Allow 'close enough' answers",
+        "tooltip": "Allow answers to be accepted if they are determined to be close\r\n enough as determined by the threshold",
+        "group" : "General"
+    },
+    "AnswerSimilarityThresholdPercent": {
+        "type": "numberbox",
+        "value": 90,
+        "label": "Similarity threshold for 'close enough' answers",
+        "tooltip": "Similarity percentage threshold determining how much of answer\r\n has to match the correct answer",
+        "group" : "General"
+    },
+    "Separator": {
+        "type": "textbox",
+        "value": "##",
+        "label": "Separator",
+        "tooltip": "The characters used to seperate the questions and answers",
+        "group" : "General"
+    },
+    "MinReward": {
+        "type": "numberbox",
+        "value": 1,
+        "label": "Min reward",
+        "tooltip": "Minimum ammount the user wins for writing the correct answer first",
+        "group" : "General"
+    },
+    "MaxReward": {
+        "type": "numberbox",
+        "value": 10,
+        "label": "Max reward",
+        "tooltip": "Maximum ammount the user wins for writing the correct answer first",
+        "group" : "General"
+    },
+    "QuestionInterval": {
+        "type": "numberbox",
+        "value": 10,
+        "label": "Interval in minutes",
+        "tooltip": "Interval in minutes before switching the question",
+        "group" : "General"
+    },
+    "NewQuestionFormat": {
+        "type": "textbox",
+        "value": "Win {0} {1} by answering: {2}",
+        "label": "Question announcement message",
+        "tooltip": "Message which will be posted when a new question is announced\r\n {0} = Reward\r\n {1} = Name of Currency\r\n {2} = Question",
+        "group" : "Response Messages"
+    },
+    "ExactMatchResponse": {
+        "type": "textbox",
+        "value": "That's correct! {0} was the first to answer the the question correctly with \"{1}\" and won {2} {3}!",
+        "label": "Correct answer message",
+        "tooltip": "Message which will be posted when someone writes the correct answer first\r\n {0} = Username\r\n {1} = Answer\r\n {2} = Reward\r\n {3} = Currency",
+        "group" : "Response Messages"
+    },
+    "CloseMatchResponse": {
+        "type": "textbox",
+        "value": "Hmmmmmm close enough... {0} was the first to answer the the question correctly (enough) with \"{1}\" and won {2} {3}!",
+        "label": "'Close enough' answer message",
+        "tooltip": "Message which will be posted when someone writes the correct answer first\r\n {0} = Username\r\n {1} = Answer\r\n {2} = Reward\r\n {3} = Currency",
+        "group" : "Response Messages"
+    },
+    "OpenQuestionsFile": {
+        "type": "button",
+        "label": "Open Questions File",
+        "tooltip": "Opens 'questions.txt' that contains all questions and answers.",
+        "function": "OpenQuestionsFile",
+        "wsevent": "",
+        "group" : ""
+    },
+    "OpenReadMe": {
+        "type": "button",
+        "label": "Open README File",
+        "tooltip": "Opens the README.txt for this script",
+        "function": "OpenReadMe",
+        "wsevent": ""
+    },
+    "RestoreDefaultSettings": {
+        "type": "button",
+        "label": "Restore Default Settings",
+        "tooltip": "Reset settings back to defaults.\r\nReload Scripts afterwards to see the changes in the UI!",
+        "function": "SetDefaults",
+        "wsevent": "",
+        "group": ""
+    }
+}
