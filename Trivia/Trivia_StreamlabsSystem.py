@@ -18,7 +18,7 @@ ScriptName = "Trivia"
 Website = "http://trjast.com"
 Description = "Trivia for Streamlabs Chatbot"
 Creator = "trjast"
-Version = "1.0.0"
+Version = "1.0.1"
 
 #---------------------------------------
 # Variables
@@ -153,7 +153,8 @@ def ValidateAnswer(message, userId, username):
         coreAnswer = coreAnswer.lower()
     coreAnswer = RemoveAcceptablePrefixAndSuffix(coreAnswer)
 
-    answerMatched = False
+    isAnswerMatched = False
+    matchedAnswer = ""
     responseStringFormat = ""
     for acceptedAnswer in CurrentAnswers:
         coreAcceptedAnswer = acceptedAnswer.strip()
@@ -162,15 +163,17 @@ def ValidateAnswer(message, userId, username):
         coreAcceptedAnswer = RemoveAcceptablePrefixAndSuffix(coreAcceptedAnswer)
 
         if coreAnswer == coreAcceptedAnswer:
-            answerMatched = True
+            isAnswerMatched = True
+            matchedAnswer = acceptedAnswer
             responseStringFormat = MySettings.ExactMatchResponse
         elif MySettings.AcceptSimilarAnswers and difflib.SequenceMatcher(None, coreAnswer, coreAcceptedAnswer).ratio() * 100 >= MySettings.AnswerSimilarityThresholdPercent:
-            answerMatched = True
+            isAnswerMatched = True
+            matchedAnswer = acceptedAnswer
             responseStringFormat = MySettings.CloseMatchResponse
 
-    if answerMatched:
+    if isAnswerMatched:
         Parent.AddPoints(userId, username, CurrentReward)
-        Parent.SendStreamMessage(responseStringFormat.format(username, message, str(CurrentReward), Parent.GetCurrencyName()))
+        Parent.SendStreamMessage(responseStringFormat.format(username, matchedAnswer, str(CurrentReward), Parent.GetCurrencyName()))
         CurrentAnswers = []
 
 #---------------------------------------
